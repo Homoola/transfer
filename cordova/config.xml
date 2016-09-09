@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+        id="com.wino.wino"
+        version="2.0.1"
+        android-packageName="com.wino.wino"
+        android-versionCode="2">
+  <name>Homoola maps</name>
+  <description>Homoola custom widget.</description>
+  <author email="tabris@eclipsesource.com" href="https://tabrisjs.com">wino</author>
+
+  <preference name="EnableDeveloperConsole" value="true" />
+
+  <plugin name="cordova-plugin-file-transfer"/>
+  <plugin name="cordova-plugin-file-opener2"/>
+
+  <hook src="scripts/android_api_key.js" type="before_platform_add" />
+</widget>
