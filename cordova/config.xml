@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget xmlns="http://www.w3.org/ns/widgets"
-        id="com.wino.wino"
-        version="2.0.1"
-        android-packageName="com.wino.wino"
+        id="com.wino.correntTrensfer"
+        version="2.0.0"
+        android-packageName="com.wino.correntTrensfer"
         android-versionCode="2">
   <name>Homoola maps</name>
   <description>Homoola custom widget.</description>
