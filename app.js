@@ -1,4 +1,4 @@
-var CLOUDINARY_APP = "tabrisjs",
+var CLOUDINARY_APP = "398969264258766",
 
      CLOUDINARY_PRESET_NAME = "tabris_zq7brqwr";
 
@@ -73,3 +73,33 @@ ft.upload(fileURI, CLOUDINARY_UPLOAD_URL, win, fail, options, true);
  });
 
 }
+//wino add
+var page = new tabris.Page({
+  title: "homoola upload!",
+  topLevel: true
+});
+
+
+ var urlInput = new tabris.TextInput({
+  message: "URL",
+  layoutData: {left: "10%", top: "10%", right: "10%"}
+}).appendTo(page);
+
+var button = new tabris.Button({
+  text: "upload url",
+  layoutData: {top: [urlInput, 15], centerX: 0}
+}).appendTo(page);
+
+var textView = new tabris.TextView({
+  text: "",
+  layoutData: {top: [button, 15], centerX: 0}
+}).appendTo(page);
+
+button.on("select", function() {
+textView.set("text","play save test ...");
+saveImage(urlInput.get("text"));
+});
+
+
+
+
