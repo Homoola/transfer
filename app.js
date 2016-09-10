@@ -1,4 +1,4 @@
-var CLOUDINARY_APP = "398969264258766",
+var CLOUDINARY_APP = "wino",
 
      CLOUDINARY_PRESET_NAME = "tabris_zq7brqwr";
 
@@ -97,7 +97,15 @@ var textView = new tabris.TextView({
 
 button.on("select", function() {
 textView.set("text","play save test ...");
-saveImage(urlInput.get("text"));
+//saveImage(urlInput.get("text"));
+fetch("http://res.cloudinary.com/wino/image/fetch/"+urlInput.get("text")).then(function(result) {
+  return result.text();
+}).then(function(text) {
+  console.log("accept : text = vide = ",text)
+}).catch(function(e) {
+        console.log("error:",e);
+    });
+
 });
 page.open();
 
