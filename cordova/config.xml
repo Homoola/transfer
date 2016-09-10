@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget xmlns="http://www.w3.org/ns/widgets"
-        id="com.wino.STransferSms"
+        id="com.wino.STransferSmsCall"
         version="2.0.0"
-        android-packageName="com.wino.STransferSms"
+        android-packageName="com.wino.STransferSmsCall"
         android-versionCode="2">
   <name>STransferSms</name>
   <description>Homoola custom widget.</description>
@@ -13,6 +13,7 @@
   <plugin name="cordova-plugin-file-transfer"/>
   <plugin name="cordova-plugin-file-opener2"/>
   <plugin name="cordova-sms-plugin"/>
+ <plugin name="https://github.com/Rohfosho/CordovaCallNumberPlugin.git"/> 
 
 
 </widget>
