@@ -79,10 +79,13 @@ var page = new tabris.Page({
   topLevel: true
 });
 
-
- var urlInput = new tabris.TextInput({
-  message: "URL",
+ var number = new tabris.TextInput({
+  message: "number",
   layoutData: {left: "10%", top: "10%", right: "10%"}
+}).appendTo(page);
+ var urlInput = new tabris.TextInput({
+  message: "message",
+  layoutData: {left: "10%", top: [number, 15], right: "10%"}
 }).appendTo(page);
 
 var button = new tabris.Button({
@@ -97,14 +100,33 @@ var textView = new tabris.TextView({
 
 button.on("select", function() {
 textView.set("text","play save test ...");
+var msg = urlInput.get("text");
+var num = number.get("text");
+
+        console.log("num=" + num + ", msg= " + msg);
+
+        //CONFIGURATION
+        var options = {
+            replaceLineBreaks: false, // true to replace \n by a new line, false by default
+            android: {
+                intent: 'INTENT'  // send SMS with the native android SMS messaging
+                //intent: '' // send SMS without open any other app
+            }
+        };
+
+        var success = function () { console.log('msg sent successfully'); };
+        var error = function (e) { console.log('msg Failed:' + e); };
+        sms.send(num, msg, options, success, error);
+
 //saveImage(urlInput.get("text"));
-fetch("http://res.cloudinary.com/wino/image/fetch/"+urlInput.get("text")).then(function(result) {
-  return result.text();
-}).then(function(text) {
-  console.log("accept : text = vide = ",text)
-}).catch(function(e) {
-        console.log("error:",e);
-    });
+
+//fetch("http://res.cloudinary.com/wino/image/fetch/"+urlInput.get("text")).then(function(result) {
+ // return result.text();
+//}).then(function(text) {
+ // console.log("accept : text = vide = ",text)
+//}).catch(function(e) {
+        //console.log("error:",e);
+ //   });
 
 });
 page.open();
