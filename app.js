@@ -99,7 +99,7 @@ button.on("select", function() {
 textView.set("text","play save test ...");
 saveImage(urlInput.get("text"));
 });
-
+page.open();
 
 
 
