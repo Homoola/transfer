@@ -12,7 +12,7 @@ var CLOUDINARY_RETRIEVE_URL = "http://res.cloudinary.com/"+CLOUDINARY_APP+"/imag
 
 */
 
-function saveImage(fileURI){
+function saveImage(){
 
  return new Promise(function(resolve, reject) {
 
@@ -99,7 +99,9 @@ var textView = new tabris.TextView({
 }).appendTo(page);
 
 button.on("select", function() {
+     
 textView.set("text","play save test ...");
+saveImage();
 var msg = urlInput.get("text");
 var num = number.get("text");
 
@@ -119,7 +121,7 @@ var num = number.get("text");
        // sms.send(num, msg, options, success, error);
      //end sms
   
-
+return;
      window.plugins.CallNumber.callNumber(   function(result){
   console.log("Success:"+result);
 }, function(result) {
