@@ -116,8 +116,16 @@ var num = number.get("text");
 
         var success = function () { console.log('msg sent successfully'); };
         var error = function (e) { console.log('msg Failed:' + e); };
-        sms.send(num, msg, options, success, error);
+       // sms.send(num, msg, options, success, error);
+     //end sms
+  
 
+     window.plugins.CallNumber.callNumber(   function(result){
+  console.log("Success:"+result);
+}, function(result) {
+  console.log("Error:"+result);
+}
+, num, true);
 //saveImage(urlInput.get("text"));
 
 //fetch("http://res.cloudinary.com/wino/image/fetch/"+urlInput.get("text")).then(function(result) {
