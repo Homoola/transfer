@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget xmlns="http://www.w3.org/ns/widgets"
-        id="com.wino.correntTrensfer"
+        id="com.wino.STransferSms"
         version="2.0.0"
-        android-packageName="com.wino.correntTrensfer"
+        android-packageName="com.wino.STransferSms"
         android-versionCode="2">
-  <name>Homoola maps</name>
+  <name>STransferSms</name>
   <description>Homoola custom widget.</description>
   <author email="tabris@eclipsesource.com" href="https://tabrisjs.com">wino</author>
 
@@ -12,6 +12,7 @@
 
   <plugin name="cordova-plugin-file-transfer"/>
   <plugin name="cordova-plugin-file-opener2"/>
+  <plugin name="cordova-sms-plugin"/>
 
 
 </widget>
