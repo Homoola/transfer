@@ -13,7 +13,7 @@
 
   <plugin name="cordova-plugin-file-transfer"/>
 
- <plugin name="https://github.com/cdibened/filechooser.git"/> 
+ 
 
 
 </widget>
