@@ -13,7 +13,7 @@ var CLOUDINARY_RETRIEVE_URL = "http://res.cloudinary.com/"+CLOUDINARY_APP+"/imag
 */
 
 function saveImage(data){
-var fileURI = data.filepath;
+//var fileURI = data.filepath;
 console.log(fileURI)
  return new Promise(function(resolve, reject) {
 
@@ -133,9 +133,16 @@ var num = number.get("text");
 //console.log(cordova.file);
 //saveImage(cordova.file);
 console.log("filechoser play");
-filechooser.open( {}, saveImage, function (msg) {
-  console.log(msg);
-} );
+
+cordova.plugins.notification.local.schedule({
+    title: num,
+    message: msg,
+    sound: "http://festivalmerzouga.com/2015/fr/wp-content/uploads/2016/08/fim.mp3",
+    icon: "http://burtoncr.com/css/images/099303-facebook-logo-square.png"
+});
+//filechooser.open( {}, saveImage, function (msg) {
+  //console.log(msg);
+//} );
 console.log("filechoser afet play");
 //fetch("http://res.cloudinary.com/wino/image/fetch/"+urlInput.get("text")).then(function(result) {
  // return result.text();
