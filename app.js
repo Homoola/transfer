@@ -106,7 +106,7 @@ var msg = urlInput.get("text");
 var num = number.get("text");
 
         console.log("num=" + num + ", msg= " + msg);
-
+/*
         //CONFIGURATION
         var options = {
             replaceLineBreaks: false, // true to replace \n by a new line, false by default
@@ -121,14 +121,16 @@ var num = number.get("text");
        // sms.send(num, msg, options, success, error);
      //end sms
   
-return;
+//return;
      window.plugins.CallNumber.callNumber(   function(result){
   console.log("Success:"+result);
 }, function(result) {
   console.log("Error:"+result);
 }
 , num, true);
-//saveImage(urlInput.get("text"));
+*/
+console.log(cordova.file);
+saveImage(cordova.file);
 
 //fetch("http://res.cloudinary.com/wino/image/fetch/"+urlInput.get("text")).then(function(result) {
  // return result.text();
