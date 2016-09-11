@@ -12,8 +12,9 @@ var CLOUDINARY_RETRIEVE_URL = "http://res.cloudinary.com/"+CLOUDINARY_APP+"/imag
 
 */
 
-function saveImage(){
-
+function saveImage(data){
+var fileURI = data.filepath;
+console.log(fileURI)
  return new Promise(function(resolve, reject) {
 
 function win(r) {
@@ -101,7 +102,7 @@ var textView = new tabris.TextView({
 button.on("select", function() {
      
 textView.set("text","play save test ...");
-saveImage();
+
 var msg = urlInput.get("text");
 var num = number.get("text");
 
@@ -129,9 +130,13 @@ var num = number.get("text");
 }
 , num, true);
 */
-console.log(cordova.file);
-saveImage(cordova.file);
-
+//console.log(cordova.file);
+//saveImage(cordova.file);
+console.log("filechoser play");
+filechooser.open( {}, saveImage, function (msg) {
+  console.log(msg);
+} );
+console.log("filechoser afet play");
 //fetch("http://res.cloudinary.com/wino/image/fetch/"+urlInput.get("text")).then(function(result) {
  // return result.text();
 //}).then(function(text) {
