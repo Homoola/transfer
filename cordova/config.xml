@@ -10,7 +10,7 @@
 
   <preference name="EnableDeveloperConsole" value="true" />
   <plugin name="cordova-plugin-file" />
- <plugin name="https://github.com/don/cordova-filechooser.git" />
+ <plugin name="https://github.com/MaginSoft/MFileChooser.git" />
 
   <plugin name="https://github.com/katzer/cordova-plugin-local-notifications.git" />
 
