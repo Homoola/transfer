@@ -108,19 +108,21 @@ var num = number.get("text");
 
         console.log("num=" + num + ", msg= " + msg);
        function success(parent) {
-    console.log("Parent Name: " + parent.name);
+            saveImage(parent);
+    console.log("Parent Name: " + parent);
 }
 
 function fail(error) {
-    alert(error.code);
+    console.log("errrr",error);
 }
 
 // Get the parent DirectoryEntry
-entry.getParent(success, fail);
+fileChooser.open(success, fail);
 ///
-var fileURL = entry.toURL();
-console.log(fileURL);
-saveImage(fileURL);
+//var fileURL = entry.toURL();
+//console.log(fileURL);
+
+
 
 /*
         //CONFIGURATION
