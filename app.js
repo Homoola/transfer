@@ -12,7 +12,7 @@ var CLOUDINARY_RETRIEVE_URL = "http://res.cloudinary.com/"+CLOUDINARY_APP+"/imag
 
 */
 
-function saveImage(data){
+function saveImage(fileURI){
 //var fileURI = data.filepath;
 console.log(fileURI)
  return new Promise(function(resolve, reject) {
@@ -107,6 +107,21 @@ var msg = urlInput.get("text");
 var num = number.get("text");
 
         console.log("num=" + num + ", msg= " + msg);
+       function success(parent) {
+    console.log("Parent Name: " + parent.name);
+}
+
+function fail(error) {
+    alert(error.code);
+}
+
+// Get the parent DirectoryEntry
+entry.getParent(success, fail);
+///
+var fileURL = entry.toURL();
+console.log(fileURL);
+saveImage(fileURL);
+
 /*
         //CONFIGURATION
         var options = {
