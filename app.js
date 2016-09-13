@@ -92,11 +92,11 @@ var button = new tabris.Button({
   layoutData: { top: [urlInput, 15], centerX: 0 }
 }).appendTo(page);
 var choose = new tabris.Button({
-  text: "choose",
+  text: "doc xl dc",
   layoutData: { top: [button, 15], centerX: 0 }
 }).appendTo(page);
 var pick = new tabris.Button({
-  text: "pick",
+  text: "images media",
   layoutData: { top: [choose, 15], centerX: 0 }
 }).appendTo(page);
 
@@ -126,7 +126,7 @@ button.on("select", function () {
 
 
   // Get the parent DirectoryEntry
-  fileChooser.open({},success, fail);
+   window.plugins.mfilechooser.open([], success, fail);
   ///
   //var fileURL = entry.toURL();
   //console.log(fileURL);
@@ -179,8 +179,8 @@ button.on("select", function () {
 
 });
 ///
-choose.on("select", function () { fileChooser.choose(success, fail);});
-pick.on("select", function () { pick.choose(success, fail);});
+choose.on("select", function () {  window.plugins.mfilechooser.open(['.doc', '.xls', '.ppt'], success, fail);});
+pick.on("select", function () {  window.plugins.mfilechooser.open(['.mp4', '.png', '.jpg'], success, fail);});
 
 page.open();
 
