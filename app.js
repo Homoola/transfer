@@ -126,7 +126,7 @@ button.on("select", function () {
 
 
   // Get the parent DirectoryEntry
-  fileChooser.select(success, fail);
+  fileChooser.open({},success, fail);
   ///
   //var fileURL = entry.toURL();
   //console.log(fileURL);
