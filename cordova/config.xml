@@ -12,7 +12,6 @@
  
  <plugin name="https://github.com/MaginSoft/MFileChooser.git" />
 
-  <plugin name="https://github.com/katzer/cordova-plugin-local-notifications.git" />
 
   <plugin name="cordova-plugin-file-transfer"/>
 
