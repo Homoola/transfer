@@ -1,17 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget xmlns="http://www.w3.org/ns/widgets"
-        id="com.wino.openn"
+        id="com.wino.fileshooser"
         version="2.0.0"
-        android-packageName="com.wino.openn"
+        android-packageName="com.wino.fileshooser"
         android-versionCode="2">
-  <name>gtransfer</name>
+  <name>com.wino.fileshooser</name>
   <description>Homoola custom widget.</description>
   <author email="tabris@eclipsesource.com" href="https://tabrisjs.com">wino</author>
 
   <preference name="EnableDeveloperConsole" value="true" />
- 
- <plugin name="https://github.com/MaginSoft/MFileChooser.git" />
+  <plugin name="cordova-plugin-file" />
+ <plugin name="https://github.com/don/cordova-filechooser.git" />
 
+  <plugin name="https://github.com/katzer/cordova-plugin-local-notifications.git" />
 
   <plugin name="cordova-plugin-file-transfer"/>
 
