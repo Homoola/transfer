@@ -187,7 +187,7 @@ button.on("select", function () {
 choose.on("select", function () {  
  // window.plugins.mfilechooser.open(['.doc', '.xls', '.ppt'], success, fail);
    //if (imageUrl.substring(0,21)=="content://com.android") {
-     filechooser.open( {}, function(imageUrl){
+     filechooser.open(function(imageUrl){
        console.log("star link:",imageUrl);
                 if(imageUrl.indexOf('content://') != -1 && imageUrl.indexOf("%3A") != -1){
                     //"PlainFileUrl = content://com.android.providers.media.documents/document/image%3A14",
@@ -223,7 +223,7 @@ choose.on("select", function () {
 });
 //
 pick.on("select", function () { 
-    filechooser.open( {}, function(imageUrl_){
+    filechooser.open( function(imageUrl_){
        console.log("star link T 2:",imageUrl_);
  var  imageUrl = imageUrl.replace("%", "%25");
 console.log("star link T Replace2:",imageUrl);
