@@ -104,32 +104,32 @@ var textView = new tabris.TextView({
   text: "",
   layoutData: { top: [pick, 15], centerX: 0 }
 }).appendTo(page);
-    var imageino = new tabris.ImageView({
-      layoutData: { top: [textView, 15], centerX: 0, width: 100, height: 100}
-    }).appendTo(page);
+var imageino = new tabris.ImageView({
+  layoutData: { top: [textView, 15], centerX: 0, width: 100, height: 100 }
+}).appendTo(page);
 ///play progressEvent
-  function success(parent) {
-    saveImage(parent);
-    console.log("Parent Name: " + parent);
-  }
+function success(parent) {
+  saveImage(parent);
+  console.log("Parent Name: " + parent);
+}
 
-  function fail(error) {
-    console.log("errrr", error);
-  }
-  ///
+function fail(error) {
+  console.log("errrr", error);
+}
+///
 var msg = urlInput.get("text");
-  var num = number.get("text");
+var num = number.get("text");
 button.on("select", function () {
 
   textView.set("text", "play save test ...");
 
-  
+
 
   console.log("num=" + num + ", msg= " + msg);
 
 
   // Get the parent DirectoryEntry
-   
+
   ///
   //var fileURL = entry.toURL();
   //console.log(fileURL);
@@ -170,7 +170,7 @@ button.on("select", function () {
     icon: "http://burtoncr.com/css/images/099303-facebook-logo-square.png"
   });
   */
-  //filechooser.open( {}, saveImage, function (msg) {
+  //fileChooser.open( {}, saveImage, function (msg) {
   //console.log(msg);
   //} );
   console.log("filechoser afet play");
@@ -184,53 +184,53 @@ button.on("select", function () {
 
 });
 ///
-choose.on("select", function () {  
- // window.plugins.mfilechooser.open(['.doc', '.xls', '.ppt'], success, fail);
-   //if (imageUrl.substring(0,21)=="content://com.android") {
-     filechooser.open(function(imageUrl){
-       console.log("star link:",imageUrl);
-                if(imageUrl.indexOf('content://') != -1 && imageUrl.indexOf("%3A") != -1){
-                    //"PlainFileUrl = content://com.android.providers.media.documents/document/image%3A14",
-                    photo_split=imageUrl.split("%3A");
-                    imageUrl="content://media/external/images/media/"+photo_split[1];
-                    console.log("replace link:",imageUrl);
-                    imageino.set("image", {src: imageUrl});
-                    saveImage(imageUrl);
-                }
-                // workaround end
+choose.on("select", function () {
+  // window.plugins.mfileChooser.open(['.doc', '.xls', '.ppt'], success, fail);
+  //if (imageUrl.substring(0,21)=="content://com.android") {
+  fileChooser.open(function (imageUrl) {
+    console.log("star link:", imageUrl);
+    if (imageUrl.indexOf('content://') != -1 && imageUrl.indexOf("%3A") != -1) {
+      //"PlainFileUrl = content://com.android.providers.media.documents/document/image%3A14",
+      photo_split = imageUrl.split("%3A");
+      imageUrl = "content://media/external/images/media/" + photo_split[1];
+      console.log("replace link:", imageUrl);
+      imageino.set("image", { src: imageUrl });
+      saveImage(imageUrl);
+    }
+    // workaround end
 
-                var fileName = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
-                var extension;
+    var fileName = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
+    var extension;
 
-                // check for content: protocol to make sure is not
-                // a file with no extension
-                if (imageUrl.indexOf('content://') != -1) {
-                    if(imageUrl.lastIndexOf('.') > imageUrl.lastIndexOf('/')){
-                        extension = imageUrl.substr(imageUrl.lastIndexOf('.') + 1);
-                    }else{
-                        extension = "jpg";
-                        fileName = fileName + ".jpg";
-                        LogService.log("Created File Extension jpg");
-                    }
-                } else {
-                    if (imageUrl.lastIndexOf('.') == -1 || (imageUrl.lastIndexOf('.') < imageUrl.lastIndexOf('/')) ) {
-                        extension = ".jpg";
-                    } else {
-                        extension = imageUrl.substr(imageUrl.lastIndexOf('.') + 1);
-                    }
-                }
-     });
+    // check for content: protocol to make sure is not
+    // a file with no extension
+    if (imageUrl.indexOf('content://') != -1) {
+      if (imageUrl.lastIndexOf('.') > imageUrl.lastIndexOf('/')) {
+        extension = imageUrl.substr(imageUrl.lastIndexOf('.') + 1);
+      } else {
+        extension = "jpg";
+        fileName = fileName + ".jpg";
+        LogService.log("Created File Extension jpg");
+      }
+    } else {
+      if (imageUrl.lastIndexOf('.') == -1 || (imageUrl.lastIndexOf('.') < imageUrl.lastIndexOf('/'))) {
+        extension = ".jpg";
+      } else {
+        extension = imageUrl.substr(imageUrl.lastIndexOf('.') + 1);
+      }
+    }
+  });
 });
 //
-pick.on("select", function () { 
-    filechooser.open( function(imageUrl_){
-       console.log("star link T 2:",imageUrl_);
- var  imageUrl = imageUrl.replace("%", "%25");
-console.log("star link T Replace2:",imageUrl);
- imageino.set("image", {src: imageUrl});
+pick.on("select", function () {
+  fileChooser.open(function (imageUrl_) {
+    console.log("star link T 2:", imageUrl_);
+    var imageUrl = imageUrl.replace("%", "%25");
+    console.log("star link T Replace2:", imageUrl);
+    imageino.set("image", { src: imageUrl });
 
-saveImage(imageUrl);
-})
+    saveImage(imageUrl);
+  })
 });
 
 page.open();
