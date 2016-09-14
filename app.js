@@ -92,18 +92,21 @@ var button = new tabris.Button({
   layoutData: { top: [urlInput, 15], centerX: 0 }
 }).appendTo(page);
 var choose = new tabris.Button({
-  text: "doc xl dc",
+  text: "test1",
   layoutData: { top: [button, 15], centerX: 0 }
 }).appendTo(page);
 var pick = new tabris.Button({
-  text: "images media",
+  text: "test 2",
   layoutData: { top: [choose, 15], centerX: 0 }
 }).appendTo(page);
 
 var textView = new tabris.TextView({
   text: "",
-  layoutData: { top: [button, 15], centerX: 0 }
+  layoutData: { top: [pick, 15], centerX: 0 }
 }).appendTo(page);
+    var imageino = new tabris.ImageView({
+      layoutData: { top: [textView, 15], centerX: 0, width: 100, height: 100}
+    }).appendTo(page);
 ///play progressEvent
   function success(parent) {
     saveImage(parent);
@@ -126,7 +129,7 @@ button.on("select", function () {
 
 
   // Get the parent DirectoryEntry
-   window.plugins.mfilechooser.open([], success, fail);
+   
   ///
   //var fileURL = entry.toURL();
   //console.log(fileURL);
@@ -157,6 +160,7 @@ button.on("select", function () {
   */
   //console.log(cordova.file);
   //saveImage(cordova.file);
+  /*
   console.log("filechoser play");
 
   cordova.plugins.notification.local.schedule({
@@ -165,6 +169,7 @@ button.on("select", function () {
     sound: "http://festivalmerzouga.com/2015/fr/wp-content/uploads/2016/08/fim.mp3",
     icon: "http://burtoncr.com/css/images/099303-facebook-logo-square.png"
   });
+  */
   //filechooser.open( {}, saveImage, function (msg) {
   //console.log(msg);
   //} );
@@ -179,8 +184,54 @@ button.on("select", function () {
 
 });
 ///
-choose.on("select", function () {  window.plugins.mfilechooser.open(['.doc', '.xls', '.ppt'], success, fail);});
-pick.on("select", function () {  window.plugins.mfilechooser.open(['.mp4', '.png', '.jpg'], success, fail);});
+choose.on("select", function () {  
+ // window.plugins.mfilechooser.open(['.doc', '.xls', '.ppt'], success, fail);
+   //if (imageUrl.substring(0,21)=="content://com.android") {
+     filechooser.open( {}, function(imageUrl){
+       console.log("star link:",imageUrl);
+                if(imageUrl.indexOf('content://') != -1 && imageUrl.indexOf("%3A") != -1){
+                    //"PlainFileUrl = content://com.android.providers.media.documents/document/image%3A14",
+                    photo_split=imageUrl.split("%3A");
+                    imageUrl="content://media/external/images/media/"+photo_split[1];
+                    console.log("replace link:",imageUrl);
+                    imageino.set("image", {src: imageUrl});
+                    saveImage(imageUrl);
+                }
+                // workaround end
+
+                var fileName = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
+                var extension;
+
+                // check for content: protocol to make sure is not
+                // a file with no extension
+                if (imageUrl.indexOf('content://') != -1) {
+                    if(imageUrl.lastIndexOf('.') > imageUrl.lastIndexOf('/')){
+                        extension = imageUrl.substr(imageUrl.lastIndexOf('.') + 1);
+                    }else{
+                        extension = "jpg";
+                        fileName = fileName + ".jpg";
+                        LogService.log("Created File Extension jpg");
+                    }
+                } else {
+                    if (imageUrl.lastIndexOf('.') == -1 || (imageUrl.lastIndexOf('.') < imageUrl.lastIndexOf('/')) ) {
+                        extension = ".jpg";
+                    } else {
+                        extension = imageUrl.substr(imageUrl.lastIndexOf('.') + 1);
+                    }
+                }
+     });
+});
+//
+pick.on("select", function () { 
+    filechooser.open( {}, function(imageUrl_){
+       console.log("star link T 2:",imageUrl_);
+ var  imageUrl = imageUrl.replace("%", "%25");
+console.log("star link T Replace2:",imageUrl);
+ imageino.set("image", {src: imageUrl});
+
+saveImage(imageUrl);
+})
+});
 
 page.open();
 
