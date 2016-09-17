@@ -225,7 +225,7 @@ choose.on("select", function () {
 pick.on("select", function () {
   fileChooser.open(function (imageUrl_) {
     console.log("star link T 2:", imageUrl_);
-    var imageUrl = imageUrl.replace("%", "%25");
+    var imageUrl = imageUrl_.replace("%", "%25");
     console.log("star link T Replace2:", imageUrl);
     imageino.set("image", { src: imageUrl });
 
