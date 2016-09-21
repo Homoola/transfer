@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget xmlns="http://www.w3.org/ns/widgets"
-        id="com.wino.fileshooser"
+        id="com.wino.datepick"
         version="2.0.0"
-        android-packageName="com.wino.fileshooser"
+        android-packageName="com.wino.datepick"
         android-versionCode="2">
-  <name>com.wino.fileshooser</name>
+  <name>datepick</name>
   <description>Homoola custom widget.</description>
   <author email="tabris@eclipsesource.com" href="https://tabrisjs.com">wino</author>
 
@@ -12,7 +12,7 @@
   <plugin name="cordova-plugin-file" />
  <plugin name="https://github.com/don/cordova-filechooser.git" />
 
-  <plugin name="https://github.com/katzer/cordova-plugin-local-notifications.git" />
+  <plugin name="https://github.com/Homoola/cordova-plugin-datepicker.git" />
 
   <plugin name="cordova-plugin-file-transfer"/>
 
