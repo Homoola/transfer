@@ -96,7 +96,7 @@ var choose = new tabris.Button({
   layoutData: { top: [button, 15], centerX: 0 }
 }).appendTo(page);
 var pick = new tabris.Button({
-  text: "test 2",
+  text: "pick Date",
   layoutData: { top: [choose, 15], centerX: 0 }
 }).appendTo(page);
 
@@ -197,10 +197,18 @@ choose.on("select", function () {
 });
 //
 pick.on("select", function () {
-var options = {
-  date: new Date(),
-  mode: 'date'
-};
+  var options = {
+    date: new Date(),
+    mode: 'date', // or 'time'
+    minDate: new Date() - 10000,
+     maxDate: new Date() + 10000,
+    allowOldDates: true,
+    allowFutureDates: false,
+    doneButtonLabel: 'اوكي',
+    doneButtonColor: '#F39',
+    cancelButtonLabel: 'ميك',
+    cancelButtonColor: '#369'
+  };
 
 datePicker.show(options, function(date){
   console.log("date result " + date);  
