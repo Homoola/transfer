@@ -92,7 +92,7 @@ var button = new tabris.Button({
   layoutData: { top: [urlInput, 15], centerX: 0 }
 }).appendTo(page);
 var choose = new tabris.Button({
-  text: "test1",
+  text: "Multi picker",
   layoutData: { top: [button, 15], centerX: 0 }
 }).appendTo(page);
 var pick = new tabris.Button({
@@ -185,41 +185,15 @@ button.on("select", function () {
 });
 ///
 choose.on("select", function () {
-  // window.plugins.mfileChooser.open(['.doc', '.xls', '.ppt'], success, fail);
-  //if (imageUrl.substring(0,21)=="content://com.android") {
-  fileChooser.open(function (imageUrl) {
-    console.log("star link:", imageUrl);
-    if (imageUrl.indexOf('content://') != -1 && imageUrl.indexOf("%3A") != -1) {
-      //"PlainFileUrl = content://com.android.providers.media.documents/document/image%3A14",
-      photo_split = imageUrl.split("%3A");
-      imageUrl = "content://media/external/images/media/" + photo_split[1];
-      console.log("replace link:", imageUrl);
-      imageino.set("image", { src: imageUrl });
-      saveImage(imageUrl);
+  window.imagePicker.getPictures(
+    function(results) {
+        for (var i = 0; i < results.length; i++) {
+            console.log('Image URI: ' + results[i]);
+        }
+    }, function (error) {
+        console.log('Error: ' + error);
     }
-    // workaround end
-
-    var fileName = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
-    var extension;
-
-    // check for content: protocol to make sure is not
-    // a file with no extension
-    if (imageUrl.indexOf('content://') != -1) {
-      if (imageUrl.lastIndexOf('.') > imageUrl.lastIndexOf('/')) {
-        extension = imageUrl.substr(imageUrl.lastIndexOf('.') + 1);
-      } else {
-        extension = "jpg";
-        fileName = fileName + ".jpg";
-        LogService.log("Created File Extension jpg");
-      }
-    } else {
-      if (imageUrl.lastIndexOf('.') == -1 || (imageUrl.lastIndexOf('.') < imageUrl.lastIndexOf('/'))) {
-        extension = ".jpg";
-      } else {
-        extension = imageUrl.substr(imageUrl.lastIndexOf('.') + 1);
-      }
-    }
-  });
+);
 });
 //
 pick.on("select", function () {
