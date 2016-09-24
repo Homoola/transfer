@@ -4,7 +4,7 @@
         version="2.0.0"
         android-packageName="com.wino.datepick"
         android-versionCode="2">
-  <name>Multi images & date picker</name>
+  <name>Multi images - date picker</name>
   <description>Homoola custom widget.</description>
   <author email="tabris@eclipsesource.com" href="https://tabrisjs.com">wino</author>
 
