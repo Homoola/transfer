@@ -198,7 +198,7 @@ choose.on("select", function () {
   
       function onSuccess(imageUrl_) {
 		console.error("imaeg link: ",imageUrl_);
-	      var imageUrl = imageUrl.substring(0,url.indexOf("?"));
+	      var imageUrl = imageUrl_.substring(0,url.indexOf("?"));
 	      	console.error("image aprey replace: ",imageUrl);
       imageino.set("image", {src: imageUrl});
         saveImage(imageUrl);
