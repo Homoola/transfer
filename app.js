@@ -46,15 +46,7 @@ function saveImage(fileURI) {
 
     options.fileName = fileURI.substr(fileURI.lastIndexOf('/') + 1);
 	////  
-var filetype = fileURI.substr(fileURI.lastIndexOf('.') + 1);
-if(filetype == "png") {
-    options.mimeType = "image/png";
-}
-else
-	//if (filetype == "jpg")
-	{
-    options.mimeType = "image/jpeg";
-}
+ options.mimeType = "image/jpeg";
 /////
     options.params = {
 
