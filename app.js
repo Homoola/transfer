@@ -7,7 +7,8 @@ var CLOUDINARY_RETRIEVE_URL = "http://res.cloudinary.com/" + CLOUDINARY_APP + "/
   CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/" + CLOUDINARY_APP + "/image/upload";
 
 /*******************
-* Saving Images
+* Saving 
+
 */
 
 function saveImage(fileURI) {
@@ -105,7 +106,7 @@ var textView = new tabris.TextView({
   layoutData: { top: [pick, 15], centerX: 0 }
 }).appendTo(page);
 var imageino = new tabris.ImageView({
-  layoutData: { top: [textView, 15], centerX: 0, width: 100, height: 100 }
+  layoutData: { top: [textView, 15], centerX: 0, width: 300, height: 300 }
 }).appendTo(page);
 ///play progressEvent
 function success(parent) {
@@ -185,15 +186,24 @@ button.on("select", function () {
 });
 ///
 choose.on("select", function () {
-  window.imagePicker.getPictures(
-    function(results) {
-        for (var i = 0; i < results.length; i++) {
-            console.log('Image URI: ' + results[i]);
-        }
-    }, function (error) {
-        console.log('Error: ' + error);
+    navigator.camera.getPicture(onSuccess, onFail, {
+ quality: 50,
+            destinationType: Camera.DestinationType.FILE_URI,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            targetWidth: 300,
+            targetHeight: 300
     }
-);
+	  );
+	  //
+  
+      function onSuccess(imageUrl) {
+		console.error(imageUrl);
+      imageino.set("image", {src: imageUrl});
+        saveImage(imageUrl);
+    }
+    function onFail(message) {
+      console.log("Camera failed because: " + message);
+    }
 });
 //
 pick.on("select", function () {
