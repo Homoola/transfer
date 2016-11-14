@@ -1,3 +1,7 @@
+//
+var img =  localStorage.getItem("img");
+//
+
 var CLOUDINARY_APP = "wino",
 
   CLOUDINARY_PRESET_NAME = "tabris_zq7brqwr";
@@ -110,6 +114,8 @@ var textView = new tabris.TextView({
 var imageino = new tabris.ImageView({
   layoutData: { top: [textView, 15], centerX: 0, width: 300, height: 300 }
 }).appendTo(page);
+
+iimageino.set("image", {src: img});
 ///play progressEvent
 function success(parent) {
   saveImage(parent);
@@ -203,6 +209,7 @@ choose.on("select", function () {
 	      var imageUrl = imageUrl_.substring(0,imageUrl_.indexOf("?"));
 	      	console.error("image aprey replace: ",imageUrl);
       imageino.set("image", {src: imageUrl});
+	       localStorage.setItem("img", imageUrl);
         saveImage(imageUrl);
     }
     function onFail(message) {
