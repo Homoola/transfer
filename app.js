@@ -115,7 +115,7 @@ var imageino = new tabris.ImageView({
   layoutData: { top: [textView, 15], centerX: 0, width: 300, height: 300 }
 }).appendTo(page);
 
-iimageino.set("image", {src: img});
+imageino.set("image", {src: img});
 ///play progressEvent
 function success(parent) {
   saveImage(parent);
